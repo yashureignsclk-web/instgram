@@ -1,0 +1,6 @@
+{
+  "name": "LUMINA",
+  "description": "Visual curation and editorial photography community for creators shaping perspective.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

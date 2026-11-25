@@ -1,0 +1,97 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    overscroll-behavior-y: contain;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.font-editorial {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+@keyframes heartPop {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.36) rotate(-8deg); }
+  50% { transform: scale(0.88) rotate(5deg); }
+  75% { transform: scale(1.12) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes doubleTapBurst {
+  0% { opacity: 0; transform: scale(0.35) rotate(-12deg); }
+  20% { opacity: 0.96; transform: scale(1.22) rotate(0deg); }
+  45% { opacity: 1; transform: scale(1) rotate(0deg); }
+  80% { opacity: 0.92; transform: scale(1.04) translateY(-8px); }
+  100% { opacity: 0; transform: scale(0.82) translateY(-28px); }
+}
+
+@keyframes soundBarPulse {
+  0%, 100% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1); }
+}
+
+.animate-heart-pop {
+  animation: heartPop 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-double-tap {
+  animation: doubleTapBurst 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.sound-bar-1 {
+  transform-origin: bottom;
+  animation: soundBarPulse 0.85s ease-in-out infinite 0.05s;
+}
+.sound-bar-2 {
+  transform-origin: bottom;
+  animation: soundBarPulse 0.72s ease-in-out infinite 0.2s;
+}
+.sound-bar-3 {
+  transform-origin: bottom;
+  animation: soundBarPulse 0.95s ease-in-out infinite 0.35s;
+}
+.sound-bar-paused {
+  animation-play-state: paused !important;
+  transform: scaleY(0.3) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-heart-pop,
+  .animate-double-tap,
+  .sound-bar-1,
+  .sound-bar-2,
+  .sound-bar-3 {
+    animation: none !important;
+  }
+}
